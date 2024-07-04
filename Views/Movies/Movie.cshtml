@@ -1,0 +1,19 @@
+﻿@model Test.Models.ViewModels.MovieViewModel
+
+<form asp-action="Movie">
+    <div>
+        <label>Title</label>
+        <input type="text" asp-for="Title" />
+    </div>
+    <div>
+        <label>Genre</label>
+        <input type="text" asp-for="Genre" />
+    </div>
+    <div>
+        <label>Actor Name</label>
+        <input type="text" asp-for="ActorName" />
+    </div>
+    <div>
+        <button class="btn btn-success" type="submit">Submit</button>
+    </div>
+</form>
