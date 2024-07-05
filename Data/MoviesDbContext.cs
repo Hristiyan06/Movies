@@ -9,7 +9,7 @@ namespace Test.Data
         {
             
         }
-        DbSet<Films> Films { get; set; }
-        DbSet<Actors> Actors { get; set; }
+        public DbSet<Films> Films { get; set; }
+        public DbSet<Actors> Actors { get; set; }
     }
 }

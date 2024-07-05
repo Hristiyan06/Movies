@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "K5EcFxB30fWaLBnLqhu1CYuVkH5qhOaDydZTs6cvyScn0yGZayk4kVFhzTn/t3eereZRNUMnhwul5wKNMR53dw==",
+  "dgSpecHash": "81XPAbfd4JB5qxkB5jrh1dZ48oU0QtOkFZRLARAhMql7RMQgG/52I0Y30z/M8FlbCCuyQ9KZ2lfzqT/dPUHS9Q==",
   "success": true,
   "projectFilePath": "C:\\Projects\\Test\\Test\\Test.csproj",
   "expectedPackageFiles": [
@@ -79,6 +79,16 @@
       "warningLevel": 1,
       "message": "Test depends on Microsoft.EntityFrameworkCore (>= 7.0.6) but Microsoft.EntityFrameworkCore 7.0.6 was not found. An approximate best match of Microsoft.EntityFrameworkCore 7.0.7 was resolved.",
       "libraryId": "Microsoft.EntityFrameworkCore",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    },
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Test depends on Microsoft.EntityFrameworkCore.Design (>= 7.0.6) but Microsoft.EntityFrameworkCore.Design 7.0.6 was not found. An approximate best match of Microsoft.EntityFrameworkCore.Design 7.0.7 was resolved.",
+      "libraryId": "Microsoft.EntityFrameworkCore.Design",
       "targetGraphs": [
         "net7.0"
       ]

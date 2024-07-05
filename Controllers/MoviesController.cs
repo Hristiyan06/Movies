@@ -22,12 +22,14 @@ namespace Test.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                Actors actor = new Actors()
+                Actors actor = _moviesDbContext.Actors.Where(name => name.Name == movieViewModel.ActorName).FirstOrDefault();
+                if (actor == null)
                 {
-                    Name = movieViewModel.ActorName
-                };
-
+                    actor = new Actors()
+                    {
+                        Name = movieViewModel.ActorName
+                    };
+                }
                 Films film = new Films()
                 {
                     Title = movieViewModel.Title,
@@ -41,6 +43,26 @@ namespace Test.Controllers
             }
 
             return View(movieViewModel);
+        }
+
+        public IActionResult MovieDetails()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult MovieDetails(string Title)
+        {
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("SeeDetails", "Movies");
+
+            }
+            return View();
+        }
+        [HttpGet]
+        public IActionResult SeeDetails()
+        {
+            return View();
         }
     }
 }

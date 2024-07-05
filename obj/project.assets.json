@@ -3457,6 +3457,7 @@
   "projectFileDependencyGroups": {
     "net7.0": [
       "Microsoft.EntityFrameworkCore >= 7.0.6",
+      "Microsoft.EntityFrameworkCore.Design >= 7.0.6",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.6",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.6"
     ]
@@ -3505,6 +3506,10 @@
             "target": "Package",
             "version": "[7.0.6, )"
           },
+          "Microsoft.EntityFrameworkCore.Design": {
+            "target": "Package",
+            "version": "[7.0.6, )"
+          },
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
             "version": "[7.0.6, )"
@@ -3544,6 +3549,16 @@
       "warningLevel": 1,
       "message": "Test depends on Microsoft.EntityFrameworkCore (>= 7.0.6) but Microsoft.EntityFrameworkCore 7.0.6 was not found. An approximate best match of Microsoft.EntityFrameworkCore 7.0.7 was resolved.",
       "libraryId": "Microsoft.EntityFrameworkCore",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    },
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Test depends on Microsoft.EntityFrameworkCore.Design (>= 7.0.6) but Microsoft.EntityFrameworkCore.Design 7.0.6 was not found. An approximate best match of Microsoft.EntityFrameworkCore.Design 7.0.7 was resolved.",
+      "libraryId": "Microsoft.EntityFrameworkCore.Design",
       "targetGraphs": [
         "net7.0"
       ]
