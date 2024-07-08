@@ -59,10 +59,27 @@ namespace Test.Controllers
             }
             return View();
         }
-        [HttpGet]
-        public IActionResult SeeDetails()
+        
+        public IActionResult SeeDetails(string movieTitle)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                MovieViewModel movieViewModel = new MovieViewModel();
+                Films film = _moviesDbContext.Films.Where(film => film.Title == movieTitle).FirstOrDefault();
+                if (film == null)
+                {
+                    TempData["MovieNotFound"] = "Movie Not Found";
+                    return RedirectToAction("MovieDetails", "Movies");
+                }
+                Actors actor = _moviesDbContext.Actors.Find(film.ActorId);
+
+                movieViewModel.Title = movieTitle;
+                movieViewModel.Genre = film.Genre;
+                movieViewModel.ActorName = actor.Name;
+
+                return View(movieViewModel);
+            }
+            return RedirectToAction("MovieDetails", "Movies");
         }
     }
 }

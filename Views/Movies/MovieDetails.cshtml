@@ -1,7 +1,10 @@
-﻿@model Test.Models.ViewModels.MovieViewModel
+﻿@model string
 <form asp-action="SeeDetails">
     <div class="text-center">
         <h1 class="display-4">Enter movie title you nigger</h1>
-        <input type="text" asp-for="Title" />
+        <input type="text" name="movieTitle" />
     </div>
+    <p style="text-align: center;">
+        @TempData["MovieNotFound"]
+    </p>
 </form>
