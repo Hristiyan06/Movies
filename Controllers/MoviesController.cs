@@ -59,7 +59,7 @@ namespace Test.Controllers
             }
             return View();
         }
-        
+
         public IActionResult SeeDetails(string movieTitle)
         {
             if (ModelState.IsValid)
@@ -81,5 +81,77 @@ namespace Test.Controllers
             }
             return RedirectToAction("MovieDetails", "Movies");
         }
+        public IActionResult ChangeDetails()
+        {
+
+            return View();
+        }
+        public IActionResult ChangeGenre(ChangeViewModel changeViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+
+                Films film = _moviesDbContext.Films.Where(film => film.Title == changeViewModel.Title).FirstOrDefault();
+                if (film == null)
+                {
+                    TempData["MovieNotFound"] = "Movie Not Found";
+                    return RedirectToAction("ChangeDetails", "Movies");
+                }
+                film.Genre = changeViewModel.ChangeData;
+                _moviesDbContext.Films.Update(film);
+                _moviesDbContext.SaveChanges();
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
+        public IActionResult ChangeActor(ChangeViewModel changeViewModel)
+        {
+            if(ModelState.IsValid)
+            {
+                Films film = _moviesDbContext.Films.Where(film => film.Title == changeViewModel.Title).FirstOrDefault();
+                Actors? actor = _moviesDbContext.Actors.Where(actor => actor.Name == changeViewModel.ChangeData).FirstOrDefault();
+                if ( actor == null)
+                {
+                    actor = new Actors();
+                    actor.Name = changeViewModel.ChangeData;
+                    _moviesDbContext.Actors.Add(actor);
+
+                    film.Actor = actor;
+
+                    _moviesDbContext.Films.Update(film);
+                    _moviesDbContext.SaveChanges();
+                    return RedirectToAction("Index", "Home");
+
+                }
+                else
+                {
+                    film.ActorId = actor.Id;
+
+                    _moviesDbContext.Films.Update(film);
+                    _moviesDbContext.SaveChanges();
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            return View();
+        }
+        public IActionResult DeleteMovie(string movieTitle)
+        {
+            
+            if (ModelState.IsValid)
+            {
+                Films film = _moviesDbContext.Films.Where(film => film.Title == movieTitle).FirstOrDefault();
+                if (film == null )
+                {
+                    return View();
+                }
+                _moviesDbContext.Films.Remove(film);
+                _moviesDbContext.SaveChanges();
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
+
     }
 }

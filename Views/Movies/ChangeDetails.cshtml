@@ -1,0 +1,71 @@
+﻿@model Test.Models.ViewModels.ChangeViewModel
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#movieGenre">
+    Change a movie`s genre
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="movieGenre" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Enter new movie genre</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="ChangeGenre">
+                    <div class="d-flex flex-column">
+                        <label>Movie title</label>
+                        <input id="movie-input" type="text" asp-for="Title"/>
+
+                        <label>New genre</label>
+                        <input class="mb-2" asp-for="ChangeData"/>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#movieActor">
+    Change a movie`s actor name
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="movieActor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Enter new actor name</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="ChangeActor">
+                    <div class="d-flex flex-column">
+
+                        <label>Movie title</label>
+                        <input id="movie-input" type="text" asp-for="Title" />
+
+                        <label>Actor name</label>
+                        <input class="mb-2" asp-for="ChangeData" />
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        const myModal = document.getElementById('myModal')
+        const myInput = document.getElementById('myInput')
+
+        myModal.addEventListener('shown.bs.modal', () => {
+            myInput.focus()
+        })
+
+    </script>
+}
